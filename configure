@@ -65,9 +65,9 @@ verify "These files will be edited.  Confirm" || fail "Cowardly refusing to cont
 
 echo "Ok, here we go..."
 
-for target in $(template_files); do
-  template=$template_dir/$target
-  template_subdir=${template/%$(basename $template)}
+for target in "$(template_files)"; do
+  template="$template_dir/$target"
+  template_subdir="${template/%$(basename $template)}"
   if [ ! -d "$template_subdir" ]; then
     echo "mkdir -p --verbose $template_subdir"
   fi
@@ -76,3 +76,4 @@ for target in $(template_files); do
 done
 
 echo "Configuration complete."
+
