@@ -17,8 +17,8 @@ cat -<<EOF
 Configuration: ${config}
 
 This script will rename the module_template, then
-it will apply the configuration variables to any 
-files  containing the '{{ template }}' pattern.
+it will map the configuration variables into any 
+files containing the '{{ template }}' pattern.
 
 EOF
 
@@ -43,10 +43,11 @@ template_files() {
   )
 }
 
-yq --version || fail 'yq is required (pip install yq)'
-yasha --version || fail 'yasha is required (pip install yasha)'
+YQ_VERSION=$(yq --version) || fail 'yq is required (pip install yq)'
+YASHA_VERSION=$(yasha --version) || fail 'yasha is required (pip install yasha)'
 
-project=$(yq <$config -r .config.project || fail "Can't read project name from $config"
+project=$(yq <$config -r .config.project) || fail "Can't read project name from $config"
+
 echo "Project name: ${project}"
 
 mv --verbose --no-clobber $module_template $project || fail "Module template $module_template not found."
@@ -68,10 +69,10 @@ for target in $(template_files); do
   template=$template_dir/$target
   template_subdir=${template/%$(basename $template)}
   if [ ! -d "$template_subdir" ]; then
-    echo mkdir -p --verbose $template_subdir
+    echo "mkdir -p --verbose $template_subdir"
   fi
-  echo cp --verbose --no-clobber $target $template
-  echo yasha -mode pedantic -v $config -o $target $template
+  echo "cp --verbose --no-clobber $target $template"
+  echo "yasha -mode pedantic -v $config -o $target $template"
 done
 
 echo "Configuration complete."
