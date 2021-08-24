@@ -1,7 +1,7 @@
 project:
   name: repeat
   description:
-    short: duplicating pipe fitting
+    short: a redundant pipe fitting
     medium: "Copy input to output until EOF then repeat the output stream one or more times."
   copyright_year: 2021
   author: "Matt Krueger, Reliance Systems, Inc."

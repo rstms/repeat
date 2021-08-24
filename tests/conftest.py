@@ -1,10 +1,10 @@
 # pytest fixtures
 
 import pytest
+
 from pathlib import Path
 
-@pytest.fixture(autouse=True)
+
+@pytest.fixture()
 def project():
-    project = Path().stem
-    breakpoint()
-    return project
+    return Path().absolute().stem
