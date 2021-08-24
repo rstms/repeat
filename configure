@@ -70,10 +70,10 @@ for target in "$(template_files)"; do
   template="$template_dir/$target"
   template_subdir="${template/%$(basename "$template")}"
   if [ ! -d "$template_subdir" ]; then
-    echo "mkdir -p --verbose $template_subdir"
+    mkdir -p --verbose $template_subdir
   fi
-  echo "cp --verbose --no-clobber $target $template"
-  echo "yasha -mode pedantic -v $config -o $target $template"
+  cp --verbose --no-clobber $target $template
+  yasha -mode pedantic -v $config -o $target $template
 done
 
 # rename the module directory to the project name
