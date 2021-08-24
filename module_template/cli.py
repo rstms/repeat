@@ -15,7 +15,7 @@ from .context import Context
 def cli(ctx, quiet, verbose, debug):
     """{{ project.name }} {{ project.description.short }}
 
-    project.description.long 
+    {{ project.description.long }}
     """
 
     def fail(message):
