@@ -37,6 +37,7 @@ template_files() {
   echo $(
     egrep -R '{{.*}}' |\
     grep -v config.yaml |\
+    grep -v configure |\
     cut -d: -f1 |\
     sort |
     uniq
