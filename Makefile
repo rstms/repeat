@@ -1,8 +1,8 @@
 # top-level Makefile 
 
 # testing target
-d2:
-	@echo '$(call included,clean)'
+default:
+	echo "$(call makefiles)"
 
 # remove module from the local python environment
 uninstall:
