@@ -1,6 +1,6 @@
-# {{ config.project }} - {{ config.description.short }}
+# {{ project.name }} - {{ project.description.short }}
 
-{{ config.description.medium }}
+{{ project.description.medium }}
 
 
 ------
@@ -8,26 +8,26 @@
 
 Install with pip:
 ```
-pip install {{ config.project }}
+pip install {{ project.name }}
 ```
 
 Optionally, install the dev/test modules:
 ```
-pip install {{ config.project }}[dev]
+pip install {{ project.name }}[dev]
 ```
 
 ------
 ## Module Dependencies
 install:
 ```
-{% for module in config.modules.install %}
+{% for module in project.modules.install %}
 {{ module }}
 {% endfor %}
 ```
 
 dev/test:
 ```
-{% for module in config.modules.dev %}
+{% for module in project.modules.dev %}
 {{ module }}
 {% endfor %}
 ```
@@ -35,6 +35,6 @@ dev/test:
 ------
 ## Usage:
 ```
-{{ config.usage }}
+{{ project.usage }}
 ```
 
