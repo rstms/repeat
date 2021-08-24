@@ -20,8 +20,6 @@ from .repeater import Repeater
 def cli(ctx, input, output, count, length, quiet, verbose, debug):
     """{{ project.name }} - {{ project.description.short }}"""
 
-    """
-
     """Read input lines and write them to output COUNT times.
 
         If --length is set, begin output with the number of lines read.
