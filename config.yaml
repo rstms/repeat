@@ -7,8 +7,8 @@ config:
   author: 'Matt Krueger <mkrueger@rstms.net>'
   license: MIT
   url: https://www.github.com/rstms/repeat
-  python_version: 3.8
-  usage: "{{ cli.usage }}"
+  python-version: 3.8
+  usage: INSERT_CLI_USAGE_HERE
   modules:
     install:
       - click

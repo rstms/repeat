@@ -3,7 +3,7 @@
 import click
 from pathlib import Path
 
-from {{ project }} include __header__
+from {{ config.project }} include __header__
 from .context import Context
 
 @click.command(name='{{ config.project }}')

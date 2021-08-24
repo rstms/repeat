@@ -5,7 +5,7 @@ from .constant import status
 
 __all__ = ['Context' 'ParameterError', 'status', 'cli']
 
-__name__ = '{{ project }}'
+__name__ = '{{ config.project }}'
 __version__ = '1.0.0'
 __timestamp__ = 'yyyy-mm-dd hh:mm:ss'
 __buildinfo__ = 'build system information'
