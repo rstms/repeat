@@ -90,9 +90,9 @@ for target in $(template_files); do
   cp --verbose --no-clobber $target $template
   echo "cp OK"
 
-  echo "run: yasha -mode pedantic -v $config -o $target $template"
-  yasha -mode pedantic -v $config -o $target $template
-  echo "yasha OK"
+  echo "run: j2 -f yaml <$config $template >$target"
+  j2 -f yaml <$config $template >$target
+  echo "j2 OK"
 
 done
 
