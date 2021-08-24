@@ -9,7 +9,7 @@ install:
 	pip install --use-feature=in-tree-build --upgrade .
 
 # local install in editable mode for development
-devinstall: uninstall build
+devinstall: uninstall
 	pip install --use-feature=in-tree-build --upgrade -e .[dev]
 
 # delete temporary development files

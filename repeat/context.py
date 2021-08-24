@@ -64,25 +64,7 @@ class Context():
                     message = str(exception)
                 else:
                     message = str(exception).split('\n')[0]
-                handler(f"{exception_type}.{message}")
+                handler(f"{exception_type.__name__}: {message}")
             sys.exit(-1)
 
         sys.excepthook = exception_handler
-
-    def run(self, fin, fout, count):
-        """Copy stdin to stdout and a buffer, then output the buffer multiple times.
-       
-        Arguments:
-            fin (:obj:File): input stream
-            out (:obj:File): output stream
-            count (int): number of repetitions
-        """
-        buf = tempfile.SpooledTemporaryFile()
-        for line in fin:
-            buf.write(line)
-            fout.write(line)
-
-        for _ in range(0, count):
-            buf.rewind()
-            for line in buf():
-                fout.write(buf)
