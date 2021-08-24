@@ -23,6 +23,7 @@ import sys
 
 from .exception import ParameterError
 
+
 class Repeater():
     """Repeat stream input to output mutliple times"""
 

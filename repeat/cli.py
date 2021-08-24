@@ -6,6 +6,7 @@ from .version import __header__, __version__
 from .context import Context
 from .repeater import Repeater
 
+
 @click.command(name='repeat')
 @click.version_option(message=__header__)
 @click.option('-q', '--quiet', is_flag=True, help='suppress non-error output')
