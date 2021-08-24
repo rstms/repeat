@@ -1,6 +1,6 @@
-# {{ project.name }} - {{ project.description.short }}
+# repeat - a redundant pipe fitting
 
-{{ project.description.medium }}
+Copy input to output until EOF then repeat the output stream one or more times.
 
 ## Example
 ```
@@ -17,34 +17,43 @@ three
 
 Install with pip:
 ```
-pip install {{ project.name }}
+pip install repeat
 ```
 
 Optionally, install the dev/test modules:
 ```
-pip install {{ project.name }}[dev]
+pip install repeat[dev]
 ```
 
 ------
 ## Module Dependencies
 install:
-```{% for module in project.modules.install %}
-{{ module }}{% endfor %}
+```
+click
 ```
 
 test:
-```{% for module in project.modules.test %}
-{{ module }}{% endfor %}
+```
+pytest
+pytest-click
+tox
 ```
 
 dev:
-```{% for module in project.modules.dev %}
-{{ module }}{% endfor %}
+```
+bumpversion
+twine
+yapf
+j2cli
+sphinx
+sphinx-click
+sphinx-rtd-theme
+sphinx-serve
 ```
 
 ------
 ## Usage:
 ```
-{{ project.usage }}
+INSERT_CLI_USAGE_HERE
 ```
 
