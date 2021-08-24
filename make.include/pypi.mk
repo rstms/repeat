@@ -45,7 +45,7 @@ pypi-check:
 
 pypi-clean:
 	rm -f .dist
-	rm -f .tox
+	rm -rf .tox
 
 # functions
 define require_pypi_config =
