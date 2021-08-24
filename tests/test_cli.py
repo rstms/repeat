@@ -6,7 +6,7 @@ from repeat import cli
 from subprocess import check_output
 
 
-def test_cli(cli_runner):
+def test_cli_usage(cli_runner):
     result = cli_runner.invoke(cli, ["--help"])
     assert result.exit_code == 0
     assert 'Usage:' in result.output

@@ -2,11 +2,10 @@
 
 options?=-x
 testfiles?=$(wildcard tests/test_*.py)
+options:=$(if $(test),$(options) -k $(test),$(options))
 
-# pytest   example: make options='-svvvx' test='cli' test 
+# pytest   example: make options=-svvvx test=cli test 
 test:
-	set -e;\
-	[ -n "$$test" ] && options="$$options -k $$test";\
 	pytest $(options) $(testfiles)
 
 # run pytest, breaking into pdb on exceptions or breakpoints
@@ -15,5 +14,8 @@ debug:
 
 # show available test cases 
 testls:
-	@echo Test cases:
-	@$(foreach test,$(testfiles),grep '^def test_' $(test);)
+	@echo $$($(foreach test,$(testfiles),grep '^def test_' $(test);)) |\
+	  tr ' ' '\n' | grep -v def | awk -F\( 'BEGIN{xi=0} {printf("%s",$$1);\
+	  if(++xi==3){xi=0; printf("\n");} else {printf("\t");}}' |\
+	  awk 'BEGIN{print ".TS\nbox,nowarn;\nl | l | l ." } {print} END{print ".TE";}' |\
+	  tbl | groff  -T utf8 | awk 'NF';
