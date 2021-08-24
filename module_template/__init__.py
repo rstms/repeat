@@ -1,6 +1,6 @@
-"""repeat - a redundant pipe fitting
+"""{{ project.name }} - {{ project.decription.short }}
 
-A packaged CLI program
+{{ project.description.medium }}
 
 """
 from .context import Context
