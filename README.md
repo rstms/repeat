@@ -2,7 +2,16 @@
 
 {{ project.description.medium }}
 
-
+## Example
+```
+$ echo -e "one\ntwo\nthree" | repeat
+one
+two
+three
+one
+two
+three
+```
 ------
 ## Installation
 
@@ -23,7 +32,12 @@ install:
 {{ module }}{% endfor %}
 ```
 
-dev/test:
+test:
+```{% for module in project.modules.test %}
+{{ module }}{% endfor %}
+```
+
+dev:
 ```{% for module in project.modules.dev %}
 {{ module }}{% endfor %}
 ```
