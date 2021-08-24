@@ -3,7 +3,7 @@
 import click
 
 from .context import Context
-from .verson include __header__
+from .verson import __header__
 
 @click.command(name='{{ project.name }}')
 @click.version_option(message=__header__)
