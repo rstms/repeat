@@ -133,3 +133,4 @@ dmypy.json
 cruft/
 .dist
 .style.yapf
+.timestamp
