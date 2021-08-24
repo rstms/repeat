@@ -80,7 +80,6 @@ for target in $(template_files); do
   echo "target=$target"
   echo "template=$template"
   echo "template_subdir=$template_subdir"
-  verify "loop"
   if [ ! -d "$template_subdir" ]; then
     echo "run: mkdir -p --verbose $template_subdir"
     mkdir -p --verbose $template_subdir
