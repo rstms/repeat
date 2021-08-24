@@ -17,7 +17,7 @@ three
 
 Install with pip:
 ```
-pip install repeat
+ pip install repeat
 ```
 
 Optionally, install the dev/test modules:

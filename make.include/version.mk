@@ -15,3 +15,14 @@ bump-minor:
 # bump version, reset minor and patch to zero
 bump-major:
 	bumpversion major 
+
+# update timestamp if sources have changed
+timestamp: .timestamp
+
+.timestamp: $(src)
+	@sed -i  -E repeat/version.py -e "s/(.*__timestamp__.*=).*/\\1 '$(date -Isec)'/"
+	@touch $@
+	@echo "Timestamp Updated."
+
+version-clean:
+	rm -f .timestamp
