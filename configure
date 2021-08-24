@@ -50,10 +50,6 @@ project=$(yq <$config -r .config.project) || fail "Can't read project name from 
 
 echo "Project name: ${project}"
 
-mkdir $template_dir || fail "Can't create template backup directory."
-
-mv --verbose --no-clobber $module_template $project || fail "Module template $module_template not found."
-
 echo
 echo 'Template pattern found in: ['
 for target in $(template_files); do
@@ -66,6 +62,9 @@ verify "These files will be edited.  Confirm" || fail "Cowardly refusing to cont
 
 echo "Ok, here we go..."
 
+# create a template dir for the original files
+mkdir $template_dir || fail "Can't create template backup directory."
+
 for target in "$(template_files)"; do
   template="$template_dir/$target"
   template_subdir="${template/%$(basename "$template")}"
@@ -76,6 +75,7 @@ for target in "$(template_files)"; do
   echo "yasha -mode pedantic -v $config -o $target $template"
 done
 
+# rename the module directory to the project name
 mv --verbose --no-clobber $module_template $project || fail "Unable to rename $module_template to $project."
 
 echo "Configuration complete."
