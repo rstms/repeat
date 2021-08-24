@@ -85,7 +85,7 @@ class Context():
             buf.write(line)
             fout.write(line)
 
-        for _ in range(0, count)
+        for _ in range(0, count):
             buf.rewind()
             for line in buf():
                 fout.write(buf)

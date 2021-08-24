@@ -3,7 +3,7 @@
 # run the formatter on any sources changed since the last run
 fmt: .fmt .style.yapf  
 .fmt: $(python_src)
-	@$(foreach s,$?,yapf -i -vv $(s);) 
+	@$(foreach s,$?,yapf -i -vv $(s) || exit;) 
 	@touch $@
 
 # if necessary, create a default .style.yapf and customize by applying $(yapf_rules)
