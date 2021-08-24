@@ -64,20 +64,37 @@ verify "These files will be edited.  Confirm" || fail "Cowardly refusing to cont
 echo "Ok, here we go..."
 
 # create a template dir for the original files
+echo "run: mkdir $template_dir"
 mkdir $template_dir || fail "Can't create template backup directory."
-
-for target in "$(template_files)"; do
-  template="$template_dir/$target"
-  template_subdir="${template/%$(basename "$template")}"
-  if [ ! -d "$template_subdir" ]; then
-    mkdir -p --verbose $template_subdir
-  fi
-  cp --verbose --no-clobber $target $template
-  yasha -mode pedantic -v $config -o $target $template
-done
+echo "mkdir OK."
 
 # rename the module directory to the project name
+echo "run: mv --verbose --no-clobber $module_template $project"
 mv --verbose --no-clobber $module_template $project || fail "Unable to rename $module_template to $project."
+echo "mv OK"
+
+for target in $(template_files); do
+  echo "-----"
+  template="$template_dir/$target"
+  template_subdir="${template/%$(basename "$template")}"
+  echo "target=$target"
+  echo "template=$template"
+  echo "template_subdir=$template_subdir"
+  verify "loop"
+  if [ ! -d "$template_subdir" ]; then
+    echo "run: mkdir -p --verbose $template_subdir"
+    mkdir -p --verbose $template_subdir
+    echo "mkdir OK"
+  fi
+  echo "run: cp --verbose --no-clobber $target $template"
+  cp --verbose --no-clobber $target $template
+  echo "cp OK"
+
+  echo "run: yasha -mode pedantic -v $config -o $target $template"
+  yasha -mode pedantic -v $config -o $target $template
+  echo "yasha OK"
+
+done
 
 echo "Configuration complete."
 
