@@ -55,10 +55,7 @@ class Context():
         self.verbose = verbose
         self.debug = debug
 
-        def exception_handler(exception_type,
-                              exception,
-                              traceback,
-                              debug_hook=sys.excepthook):
+        def exception_handler(exception_type, exception, traceback, debug_hook=sys.excepthook):
             """handle runtime exceptions based on debug flag"""
             if debug:
                 debug_hook(exception_type, exception, traceback)
