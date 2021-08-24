@@ -20,15 +20,13 @@ pip install {{ project.name }}[dev]
 ## Module Dependencies
 install:
 ```
-{% for module in project.modules.install %}
-{{ module }}
+{% for module in project.modules.install %}{{ module }}
 {% endfor %}
 ```
 
 dev/test:
 ```
-{% for module in project.modules.dev %}
-{{ module }}
+{% for module in project.modules.dev %}{{ module }}
 {% endfor %}
 ```
 
