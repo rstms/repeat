@@ -34,10 +34,7 @@ define verify_action =
 endef
 
 # generate a list of makefiles
-makefiles := Makefile $(wildcard make.include/*.mk)
+makefiles = Makefile $(wildcard make.include/*.mk)
 
 # return a list of matching include makefile targets
-define included =
-$(foreach file,$(makefiles),$(shell sed <$(file) -n 's/^\([[:alnum:]_-]*-$(1)\):.*/\1/p;'))
-endef
-
+included = $(foreach file,$(makefiles),$(shell sed <$(file) -n 's/^\([[:alnum:]_-]*-$(1)\):.*/\1/p;'))
