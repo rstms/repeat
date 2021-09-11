@@ -7,7 +7,7 @@ from .context import Context
 from .repeater import Repeater
 
 
-@click.command(name='{{ project.name }}')
+@click.command(name='{{ name }}')
 @click.version_option(message=__header__)
 @click.option('-q', '--quiet', is_flag=True, help='suppress non-error output')
 @click.option('-v', '--verbose', is_flag=True, help='increase diagnostic detail')
@@ -18,7 +18,7 @@ from .repeater import Repeater
 @click.argument('output', type=click.File('w'), default='-')
 @click.pass_context
 def cli(ctx, input, output, count, length, quiet, verbose, debug):
-    """{{ project.name }} - {{ project.description.short }}"""
+    """{{ name }} - {{ description_short }}"""
 
     """Read input lines and write them to output COUNT times.
 

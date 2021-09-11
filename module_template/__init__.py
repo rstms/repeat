@@ -1,6 +1,6 @@
-"""{{ project.name }} - {{ project.description.short }}
+"""{{ name }} - {{ description_short }}
 
-{{ project.description.medium }}
+{{ description_medium }}
 
 """
 from .cli import cli

@@ -1,6 +1,6 @@
-# {{ project.name }} - {{ project.description.short }}
+# {{ name }} - {{ description_short }}
 
-{{ project.description.medium }}
+{{ description_medium }}
 
 ## Example
 ```
@@ -17,34 +17,34 @@ three
 
 Install with pip:
 ```
-pip install {{ project.name }}
+pip install {{ name }}
 ```
 
 Optionally, install the dev/test modules:
 ```
-pip install {{ project.name }}[dev]
+pip install {{ name }}[test]
 ```
 
 ------
 ## Module Dependencies
 install:
-```{% for module in project.modules.install %}
+```{% for module in modules_install.split(',') %}
 {{ module }}{% endfor %}
 ```
 
 test:
-```{% for module in project.modules.test %}
+```{% for module in modules_test.split(',') %}
 {{ module }}{% endfor %}
 ```
 
 dev:
-```{% for module in project.modules.dev %}
+```{% for module in modules_dev.split(',') %}
 {{ module }}{% endfor %}
 ```
 
 ------
 ## Usage:
 ```
-{{ project.usage }}
+{{ usage }}
 ```
 

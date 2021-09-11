@@ -5,7 +5,7 @@ set -e
 
 module_template=./module_template
 template_dir=./template
-config=./config.yaml
+config=./config.env
 
 
 cat -<<EOF
@@ -44,10 +44,10 @@ template_files() {
   )
 }
 
-YQ_VERSION=$(yq --version) || fail 'yq is required (pip install yq)'
 J2_VERSION=$(j2 --version) || fail 'j2 is required (pip install j2cli)'
+DOTENV_VERSION=$(dotenv --version) || fail 'dotenv is required (pip install python-dotenv)'
 
-project=$(yq <$config -r .project.name) || fail "Can't read project name from $config"
+project=$(dotenv -f $config get name) || fail "Can't read project name from $config"
 [ -n "$project" ] || fail "Project name is empty"
 
 echo "Project name: ${project}"
@@ -92,8 +92,8 @@ for target in $(template_files); do
   cp --verbose --no-clobber $target $template
   echo "cp OK"
 
-  echo "run: j2 -f yaml <$config $template >$target"
-  j2 -f yaml <$config $template >$target
+  echo "run: j2 -f env $template $config >$target"
+  j2 -f env $template $config > $target
   echo "j2 OK"
 
 done
