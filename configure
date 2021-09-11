@@ -64,6 +64,8 @@ verify "These files will be edited.  Confirm" || fail "Cowardly refusing to cont
 
 echo "Ok, here we go..."
 
+[ -e _setup.cfg ] && mv _setup.cfg setup.cfg
+
 # create a template dir for the original files
 echo "run: mkdir $template_dir"
 mkdir $template_dir || fail "Can't create template backup directory."
